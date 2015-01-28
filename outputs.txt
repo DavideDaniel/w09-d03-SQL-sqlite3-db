@@ -1,0 +1,36 @@
+CREATE TABLE schools (
+id INTEGER PRIMARY KEY,
+name TEXT, 
+city TEXT,
+state TEXT,
+zip INTEGER,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+CREATE TRIGGER skools BEFORE UPDATE ON schools BEGIN
+    UPDATE schools SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+    END;
+
+INSERT INTO 'schools' ('name', 'city', 'state', 'zip') VALUES
+  ('Lincoln', 'Brooklyn', 'NY', '11223'),
+  ('Stuyvesant', 'Manhattan', 'NY', '10030'),
+  ('Jefferson', 'Portland', 'OR', '97217');
+
+Schools
+1|Lincoln|Brooklyn|NY|11223|2015-01-28 20:33:12|2015-01-28 20:33:12
+2|Stuyvesant|Manhattan|NY|10030|2015-01-28 20:33:12|2015-01-28 20:33:12
+3|Jefferson|Portland|OR|97217|2015-01-28 20:33:12|2015-01-28 20:33:12
+
+PRAGMA
+0|id|INTEGER|0||1
+1|name|TEXT|0||0
+2|city|TEXT|0||0
+3|state|TEXT|0||0
+4|zip|INTEGER|0||0
+5|created_at|TIMESTAMP|0|CURRENT_TIMESTAMP|0
+6|updated_at|TIMESTAMP|0|CURRENT_TIMESTAMP|0
+
+Manhattan High
+1|Manhattan High|Brooklyn|NY|11223|2015-01-28 20:33:12|2015-01-28 20:43:34
+2|Manhattan High|Manhattan|NY|10030|2015-01-28 20:33:12|2015-01-28 20:43:34
+3|Manhattan High|Portland|OR|97217|2015-01-28 20:33:12|2015-01-28 20:43:34.1

@@ -26,7 +26,7 @@ create table if not exists friends (
   db.execute("INSERT INTO friends (name, phone) VALUES (?, ?)", name, phone)
   # since the entry automatically happens at the end of the table, we can now select the last entry and display it so the user can see that their entry worked.
   person = db.execute("SELECT MAX(id) AS ID, name, phone FROM friends")
-  puts "#{name}'s number is #{phone}"
+  puts "#{person[0]}'s number is #{person[1]}."
   end
 
   # look everyone up
@@ -52,10 +52,10 @@ end
   puts "what is their new number?"
   number = gets.chomp
   # update the entry
-  db.execute("UPDATE friends SET phone = #{phone} WHERE id = #{id}.")
+  db.execute("UPDATE friends SET phone = #{number} WHERE ID = #{id}.")
   # get the updated entry so the user can see that the change happened
-  person = db.execute("SELECT name, phone WHERE id = #{id}." )
-  puts "#{name}'s number is now #{phone}"
+  person = db.execute("SELECT name, phone FROM friends WHERE ID = #{id}." )
+  puts "#{person[0]}'s number is now #{person[1]}"
   end
   # delete an entry
   if response == 'd'
