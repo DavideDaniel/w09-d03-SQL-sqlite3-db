@@ -1,0 +1,8 @@
+In your own words: what is a database?. 
+    A database is just an organized collection of data that allows for persistence. The organization allows for improved access and management. 
+
+List some problems with using files instead of a database
+    You can't map, organize, manage or relate data with files as effectively as you can with a database. 
+
+What is a schema (google may confuse you here)?
+    A schema is a layout with which you setup your tables. You can then rely on it to for reference or as templates.
