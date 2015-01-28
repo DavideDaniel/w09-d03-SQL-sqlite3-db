@@ -42,7 +42,7 @@ INSERT INTO {tableName} (name, qty, rate) SELECT name, qty, rate FROM TempOldTab
 Then delete the old table:
 
 DROP TABLE TempOldTable;
-
+UPDATE dwarfs SET name = "maroon" where name = "Grouchy";
 
 mv dwarfs.db seeds.sql
 rm dwarfs.db

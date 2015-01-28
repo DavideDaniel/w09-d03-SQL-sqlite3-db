@@ -37,4 +37,36 @@ create table if not exists friends (
    puts "#{entry[1]}'s number is #{entry[2]}"
   end
   end
-  
+
+  # update an entry
+  if response == 'u'
+  # get a list of everyone so we can select the correct person by id
+  all = db.execute("SELECT * FROM friends")
+  # loop through the names and print them to the terminal
+  all.each do |entry|
+  puts "#{entry[1]}'s number is #{entry[2]}. To select so-and-so, enter #{entry[0]} for their ID."
+end
+  # grab an id and new phone number from the user
+  puts "which id will you update?"
+  id = gets.chomp.downcase
+  puts "what is their new number?"
+  number = gets.chomp
+  # update the entry
+  db.execute("UPDATE friends SET phone = #{phone} WHERE id = #{id}.")
+  # get the updated entry so the user can see that the change happened
+  person = db.execute("SELECT name, phone WHERE id = #{id}." )
+  puts "#{name}'s number is now #{phone}"
+  end
+  # delete an entry
+  if response == 'd'
+  # get a list of everyone so we can select the correct person by id
+  all = db.execute("")
+  all.each do |entry|
+  puts "#{entry[1]}'s number is #{entry[2]}. To select so-and-so, enter #{entry[0]} for their ID."
+  end
+  puts "which id will you delete?"
+  id = gets.chomp.downcase
+  # delete the entry
+  db.execute("DELETE * WHERE id = #{id}.")
+  puts "buuuuurn"
+  end
