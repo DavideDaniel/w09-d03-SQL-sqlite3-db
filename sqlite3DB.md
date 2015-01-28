@@ -1,12 +1,22 @@
-CREATE TABLE dwarfs (ID INTEGER PRIMARY KEY, name TEXT, color TEXT, time DEFAULT_);
+CREATE TABLE dwarves (ID INTEGER PRIMARY KEY, name TEXT, color TEXT, time DEFAULT CURRENT_TIME);
 ---
-.schema dwarfs (stuff above)
+.schema dwarves (stuff above)
 ---
-INSERT INTO dwarfs (name, color) VALUES ("Happy", "Yellow");
+INSERT INTO dwarves (name, color) VALUES ("Happy", "Yellow");
 ---
-SELECT * FROM dwarfs;
+SELECT * FROM dwarves;
 
-INSERT INTO 'dwarfs' ('name', 'color') VALUES
+CREATE TABLE dwarves (
+id INTEGER PRIMARY KEY,
+name TEXT, color TEXT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+
+CREATE TRIGGER dwarfs BEFORE UPDATE ON dwarves BEGIN
+    UPDATE dwarves SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+    END;
+
+INSERT INTO 'dwarves' ('name', 'color') VALUES
   ('Happy', 'yellow'),
   ('Dopey', 'purple'),
   ('Sneezy', 'yellow'),
@@ -15,7 +25,7 @@ INSERT INTO 'dwarfs' ('name', 'color') VALUES
   ('Sleepy', 'blue'),
   ('Bashful', 'blue');
 
-  FROM where color = Brown
+SELECT * FROM where color = brown;
 
   You have two options. First, you could simply add a new column with the following:
 
@@ -32,3 +42,8 @@ INSERT INTO {tableName} (name, qty, rate) SELECT name, qty, rate FROM TempOldTab
 Then delete the old table:
 
 DROP TABLE TempOldTable;
+
+
+mv dwarfs.db seeds.sql
+rm dwarfs.db
+sqlite3 dwarfs.db < seeds.sql --
