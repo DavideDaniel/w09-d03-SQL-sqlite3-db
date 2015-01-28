@@ -34,3 +34,48 @@ Manhattan High
 1|Manhattan High|Brooklyn|NY|11223|2015-01-28 20:33:12|2015-01-28 20:43:34
 2|Manhattan High|Manhattan|NY|10030|2015-01-28 20:33:12|2015-01-28 20:43:34
 3|Manhattan High|Portland|OR|97217|2015-01-28 20:33:12|2015-01-28 20:43:34.1
+
+CREATE TABLE teachers (
+id INTEGER PRIMARY KEY,
+name TEXT, 
+email TEXT,
+subject TEXT,
+age INTEGER);
+
+INSERT INTO 'teachers' ('name', 'email', 'subject', 'age') VALUES
+  ('Grashow', 'grashow@gmail.com', 'math', '32'),
+  ('Hughes', 'hughes@gmail.com', 'math', '44'),
+  ('Wallach', 'wallach@gmail.com', 'english', '55'),
+  ('Irina', 'irina@gmail.com', 'spanish', '66'),
+  ('Poulos', 'poulos@gmail.com', 'biology', '26'),
+  ('Glass', 'glass@gmail.com', 'physics', '53');
+
+Teachers
+1|Grashow|grashow@gmail.com|math|32
+2|Hughes|hughes@gmail.com|math|44
+3|Wallach|wallach@gmail.com|english|55
+4|Irina|irina@gmail.com|spanish|66
+5|Poulos|poulos@gmail.com|biology|26
+6|Glass|glass@gmail.com|physics|53
+
+.schema teachers
+CREATE TABLE teachers (
+id INTEGER PRIMARY KEY,
+name TEXT, 
+email TEXT,
+subject TEXT,
+age INTEGER);
+
+ UPDATE teachers SET age = 40;
+1|Grashow|grashow@gmail.com|math|40
+2|Hughes|hughes@gmail.com|math|40
+3|Wallach|wallach@gmail.com|english|40
+4|Irina|irina@gmail.com|spanish|40
+5|Poulos|poulos@gmail.com|biology|40
+6|Glass|glass@gmail.com|physics|40
+
+DELETE from teachers  WHERE subject = 'math';
+3|Wallach|wallach@gmail.com|english|40
+4|Irina|irina@gmail.com|spanish|40
+5|Poulos|poulos@gmail.com|biology|40
+6|Glass|glass@gmail.com|physics|40
